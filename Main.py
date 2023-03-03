@@ -33,11 +33,11 @@ try:
         data = response.json()
         # load data into a dataframe
         df = pd.DataFrame(data).transpose()
-        df = df[['open', 'high', 'low', 'close']]
+        df = df[["open","high","low","closeadjusted","closevolume"]]
         df = df.astype(float)  # convert data types to float
         print(df.colomns)
-        X = df.drop('close', axis=1)
-        y = df['close']
+        X = df.drop('closevolume', axis=1)
+        y = df['closevolume']
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
@@ -90,4 +90,4 @@ try:
 
 except Exception as e:
     print(e)
-    print(df.columns)
+    #print(df.columns)
